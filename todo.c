@@ -46,10 +46,32 @@ void removeTask(struct List *list, const char *task) {
     }    
 }
 
-void markDone(struct List *list, int index) {
-    
+void mark(struct List *list, int index) {
+    if (index > 0 && index < list->count) {
+        if (!list->tasks[index].isDone) {
+            list->tasks[index].isDone = 1;
+            printf("Task marked : %s\n", list->tasks[index].desc);
+        }
+        else {
+            printf("Task already marked!\n");
+        }
+    }
+    else {
+        printf("Incorrect Index!\n");
+    }
 }
 
-void markUnDone(struct List *list, int index) {
-
+void unMark(struct List *list, int index) {
+    if (index > 0 && index < list->count) {
+        if (list->tasks[index].isDone) {
+            list->tasks[index].isDone = 0;
+            printf("Task unmarked : %s\n", list->tasks[index].desc);
+        }
+        else {
+            printf("Task already unmarked!\n");
+        }
+    }
+    else {
+        printf("Incorrect Index!\n");
+    }
 }
